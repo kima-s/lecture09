@@ -12,6 +12,6 @@ public interface UserMapper {
     @Select("SELECT * FROM users")
     List<User> findAll();
 
-    @Insert("insert into users (name,address,age) values (#{name},#{address},#{age})")
+    @Insert("INSERT INTO users (name,address,age) VALUES (#{name},#{address},#{age})")
     void createUser(User user);
 }

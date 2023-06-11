@@ -33,7 +33,7 @@ public class UserController {
     @PostMapping("/users")
     public ResponseEntity<Map<String, String>> create(
             @RequestBody @Validated CreateForm form,UriComponentsBuilder uriBuilder) {
-        User user = userService.createUser(form);
+        User user = userService.createUser(form.getName(),form.getAddress(), form.getAge());
         URI url = uriBuilder
                 .path("/users/" + user.getId())
                 .build()

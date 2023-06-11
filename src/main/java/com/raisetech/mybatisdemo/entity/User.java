@@ -1,13 +1,15 @@
 package com.raisetech.mybatisdemo.entity;
 
+
 public class User {
     private int id;
     private String name;
     private String address;
     private int age;
 
-    public User(int id, String name, String address, int age) {
-        this.id = id;
+
+    public User(String name, String address, int age) {
+        this.id = 0;
         this.name = name;
         this.address = address;
         this.age = age;

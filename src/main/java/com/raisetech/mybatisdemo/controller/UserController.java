@@ -32,9 +32,9 @@ public class UserController {
 
     @PostMapping("/users")
     public ResponseEntity<Map<String, String>> create(
-            @RequestBody @Validated CreateForm form) {
+            @RequestBody @Validated CreateForm form,UriComponentsBuilder uriBuilder) {
         User user = userService.createUser(form);
-        URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
+        URI url = uriBuilder
                 .path("/users/" + user.getId())
                 .build()
                 .toUri();

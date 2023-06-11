@@ -14,6 +14,6 @@ public interface UserMapper {
     List<User> findAll();
 
     @Insert("INSERT INTO users (name,address,age) VALUES (#{name},#{address},#{age})")
-    @Options(useGeneratedKeys=true, keyColumn="id")
+    @Options(useGeneratedKeys=true, keyColumn="id",keyProperty = "id")
     void createUser(User user);
 }

@@ -1,11 +1,11 @@
 package com.raisetech.mybatisdemo.controller;
 
-import com.raisetech.mybatisdemo.entity.Name;
+import com.raisetech.mybatisdemo.entity.User;
 
 public class NameResponse {
     private String name;
 
-    public NameResponse(Name name) {
+    public NameResponse(User name) {
         this.name = name.getName();
     }
 

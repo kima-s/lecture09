@@ -27,4 +27,14 @@ public class UserServiceImpl implements UserService {
         userMapper.createUser(user);
         return user;
     }
+
+    @Override
+    public void updateUser(User updateUser) {
+        userMapper.updateUser(updateUser);
+    }
+
+    @Override
+    public void deleteUser(int id){
+        userMapper.deleteUser(id);
+    };
 }

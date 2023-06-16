@@ -2,13 +2,11 @@ package com.raisetech.mybatisdemo.controller;
 
 import com.raisetech.mybatisdemo.entity.User;
 import com.raisetech.mybatisdemo.form.CreateForm;
+import com.raisetech.mybatisdemo.form.UpdateForm;
 import com.raisetech.mybatisdemo.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -40,5 +38,19 @@ public class UserController {
                 .toUri();
         return ResponseEntity.created(url).body(Map.of("message", "user successfully created!"));
     }
+
+    @PatchMapping("/users/{id}")
+    public ResponseEntity<Map<String, String>> update(
+            @PathVariable("id") int id, @RequestBody UpdateForm form) {
+        userService.updateUser(form.convertToUser(id));
+        return ResponseEntity.ok(Map.of("message", "user successfully updated"));
+    }
+
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<Map<String, String>> delete(@PathVariable("id") int id) {
+        userService.deleteUser(id);
+        return ResponseEntity.ok(Map.of("message", "user successfully deleted"));
+    }
+
 
 }

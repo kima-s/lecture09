@@ -38,6 +38,7 @@ public class UserController {
                 .toUri();
         return ResponseEntity.created(url).body(Map.of("message", "user successfully created!"));
     }
+
     @PatchMapping("/users/{id}")
     public ResponseEntity<Map<String, String>> update(
             @PathVariable("id") int id, @RequestBody UpdateForm form) {

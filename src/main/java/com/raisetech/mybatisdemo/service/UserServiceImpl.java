@@ -1,11 +1,13 @@
 package com.raisetech.mybatisdemo.service;
 
 import com.raisetech.mybatisdemo.entity.User;
+import com.raisetech.mybatisdemo.exception.ResourceNotFoundException;
 import com.raisetech.mybatisdemo.form.CreateForm;
 import com.raisetech.mybatisdemo.repository.UserMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -19,6 +21,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAll() {
         return userMapper.findAll();
+    }
+
+    @Override
+    public User findById(int id) {
+        Optional<User> user =this.userMapper.findById(id);
+        return user.orElseThrow(()->new ResourceNotFoundException("resource not found"));
     }
 
     @Override

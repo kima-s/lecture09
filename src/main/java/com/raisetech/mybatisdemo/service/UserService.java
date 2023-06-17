@@ -8,6 +8,8 @@ import java.util.List;
 public interface UserService {
     List<User> findAll();
 
+    User findById(int id);
+
     User createUser(String name, String address, Integer age);
 
     void updateUser(User updateUser);

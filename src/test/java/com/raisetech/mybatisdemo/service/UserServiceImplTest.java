@@ -53,4 +53,24 @@ class UserServiceImplTest {
                 ResourceNotFoundException.class, e -> assertThat(e.getMessage()).isEqualTo("resource not found")
         );
     }
+
+    @Test
+    public void 正常にユーザーが登録されること() throws Exception {
+        User user = new User("Takeshi Sato","tokyo",35);
+        doReturn(user).when(userMapper).createUser(user);
+
+        User actual = userServiceImpl.createUser("Takeshi Sato","tokyo",35);
+        assertThat(actual).isEqualTo(user);
+        verify(userMapper, times(1)).createUser(user);
+    }
+
+    @Test
+    public void 存在するユーザーのIDを指定したときに正常にユーザーを更新できること() throws Exception{
+        User updateUser = new User("Satoru Hara","Akita",55);
+        updateUser.setId(3);
+        doNothing().when(userMapper).updateUser(updateUser);
+
+        userServiceImpl.updateUser(updateUser);
+        verify(userMapper, times(1)).updateUser(updateUser);
+    }
 }

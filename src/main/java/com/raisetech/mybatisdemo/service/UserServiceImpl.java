@@ -2,7 +2,6 @@ package com.raisetech.mybatisdemo.service;
 
 import com.raisetech.mybatisdemo.entity.User;
 import com.raisetech.mybatisdemo.exception.ResourceNotFoundException;
-import com.raisetech.mybatisdemo.form.CreateForm;
 import com.raisetech.mybatisdemo.repository.UserMapper;
 import org.springframework.stereotype.Service;
 

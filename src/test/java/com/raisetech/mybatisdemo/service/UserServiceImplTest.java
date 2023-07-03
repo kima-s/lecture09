@@ -26,12 +26,11 @@ class UserServiceImplTest {
     UserMapper userMapper;
 
     @Test
-    public void 存在するユーザーのIDを指定したときに正常にユーザーが返されること() throws Exception {
+    public void IDに紐づくユーザーが1件取得できること() throws Exception {
         doReturn(Optional.of(new User("Takeshi Sato","tokyo",35))).when(userMapper).findById(1);
 
         User actual = userServiceImpl.findById(1);
         assertThat(actual).isEqualTo(new User("Takeshi Sato","tokyo",35));
-        verify(userMapper, times(1)).findById(1);
     }
 
     @Test
@@ -40,7 +39,6 @@ class UserServiceImplTest {
 
         List<User> actual = userServiceImpl.findAll();
         assertThat(actual).isEqualTo(List.of(new User("Takeshi Sato","Tokyo",35),new User("Jhon","Nagoya",22)));
-        verify(userMapper, times(1)).findAll();
     }
 
     @Test

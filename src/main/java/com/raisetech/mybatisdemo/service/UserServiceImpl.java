@@ -6,6 +6,7 @@ import com.raisetech.mybatisdemo.repository.UserMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -37,7 +38,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(User updateUser) {
-        userMapper.updateUser(updateUser);
+        User user = userMapper.findById(updateUser.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("resource not found"));
+        if (Objects.nonNull(user)) {
+            userMapper.updateUser(updateUser);
+        }
     }
 
     @Override

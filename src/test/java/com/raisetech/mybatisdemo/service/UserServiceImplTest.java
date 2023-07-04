@@ -65,12 +65,13 @@ class UserServiceImplTest {
     }
 
     @Test
-    public void 存在するユーザーのIDを指定したときに正常にユーザーを更新できること() throws Exception{
+    public void 存在するユーザーのIDを指定したときにユーザーを更新できること() throws Exception{
         User updateUser = new User("Satoru Hara","Akita",55);
-        updateUser.setId(3);
-        doNothing().when(userMapper).updateUser(updateUser);
+        updateUser.setId(1);
+        doReturn(Optional.of(new User("Jack","Okinawa",14))).when(userMapper).findById(1);
 
         userServiceImpl.updateUser(updateUser);
+        verify(userMapper, times(1)).findById(1);
         verify(userMapper, times(1)).updateUser(updateUser);
     }
 }

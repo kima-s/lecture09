@@ -47,6 +47,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(int id){
-        userMapper.deleteUser(id);
+        User user = userMapper.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("resource not found"));
+        if (Objects.nonNull(user)) {
+            userMapper.deleteUser(id);
+        }
     };
 }

@@ -54,12 +54,12 @@ class UserServiceImplTest {
     }
 
     @Test
-    public void 正常にユーザーが登録されること() throws Exception {
+    public void ユーザーが１件登録されること() throws Exception {
         User user = new User("Takeshi Sato","tokyo",35);
-        doReturn(user).when(userMapper).createUser(user);
+        doNothing().when(userMapper).createUser(user);
 
-        User actual = userServiceImpl.createUser("Takeshi Sato","tokyo",35);
-        assertThat(actual).isEqualTo(user);
+        userServiceImpl.createUser("Takeshi Sato","tokyo",35);
+        verify(userMapper,times(1)).createUser(user);
     }
 
     @Test

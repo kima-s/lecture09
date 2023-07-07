@@ -27,19 +27,19 @@ class UserServiceImplTest {
 
     @Test
     public void IDに紐づくユーザーが1件取得できること() throws Exception {
-        doReturn(Optional.of(new User("Takeshi Sato","tokyo",35))).when(userMapper).findById(1);
+        doReturn(Optional.of(new User("Takeshi Sato", "tokyo", 35))).when(userMapper).findById(1);
 
         User actual = userServiceImpl.findById(1);
-        assertThat(actual).isEqualTo(new User("Takeshi Sato","tokyo",35));
+        assertThat(actual).isEqualTo(new User("Takeshi Sato", "tokyo", 35));
         verify(userMapper, times(1)).findById(1);
     }
 
     @Test
-    public void 存在するユーザー情報を全て返すこと() throws Exception{
-        doReturn(List.of(new User("Takeshi Sato","Tokyo",35),new User("Jhon","Nagoya",22))).when(userMapper).findAll();
+    public void 存在するユーザー情報を全て返すこと() throws Exception {
+        doReturn(List.of(new User("Takeshi Sato", "Tokyo", 35), new User("Jhon", "Nagoya", 22))).when(userMapper).findAll();
 
         List<User> actual = userServiceImpl.findAll();
-        assertThat(actual).isEqualTo(List.of(new User("Takeshi Sato","Tokyo",35),new User("Jhon","Nagoya",22)));
+        assertThat(actual).isEqualTo(List.of(new User("Takeshi Sato", "Tokyo", 35), new User("Jhon", "Nagoya", 22)));
     }
 
     @Test
@@ -55,18 +55,18 @@ class UserServiceImplTest {
 
     @Test
     public void ユーザーが１件登録されること() throws Exception {
-        User user = new User("Takeshi Sato","tokyo",35);
+        User user = new User("Takeshi Sato", "tokyo", 35);
         doNothing().when(userMapper).createUser(user);
 
-        userServiceImpl.createUser("Takeshi Sato","tokyo",35);
-        verify(userMapper,times(1)).createUser(user);
+        userServiceImpl.createUser("Takeshi Sato", "tokyo", 35);
+        verify(userMapper, times(1)).createUser(user);
     }
 
     @Test
-    public void 存在するユーザーのIDを指定したときにユーザーを更新できること() throws Exception{
-        User updateUser = new User("Satoru Hara","Akita",55);
+    public void 存在するユーザーのIDを指定したときにユーザーを更新できること() throws Exception {
+        User updateUser = new User("Satoru Hara", "Akita", 55);
         updateUser.setId(1);
-        doReturn(Optional.of(new User("Jack","Okinawa",14))).when(userMapper).findById(1);
+        doReturn(Optional.of(new User("Jack", "Okinawa", 14))).when(userMapper).findById(1);
 
         userServiceImpl.updateUser(updateUser);
         verify(userMapper, times(1)).findById(1);
@@ -74,8 +74,8 @@ class UserServiceImplTest {
     }
 
     @Test
-    public void 存在しないユーザーのIDを指定したときにユーザーを更新せず例外が返ること() throws Exception{
-        User updateUser = new User("Satoru Hara","Akita",55);
+    public void 存在しないユーザーのIDを指定したときにユーザーを更新せず例外が返ること() throws Exception {
+        User updateUser = new User("Satoru Hara", "Akita", 55);
         updateUser.setId(1);
         doReturn(Optional.empty()).when(userMapper).findById(1);
 
@@ -88,8 +88,8 @@ class UserServiceImplTest {
     }
 
     @Test
-    public void 存在するユーザーのIDを指定したときにユーザーを削除できること() throws Exception{
-        doReturn(Optional.of(new User("Jack","Okinawa",14))).when(userMapper).findById(1);
+    public void 存在するユーザーのIDを指定したときにユーザーを削除できること() throws Exception {
+        doReturn(Optional.of(new User("Jack", "Okinawa", 14))).when(userMapper).findById(1);
 
         userServiceImpl.deleteUser(1);
         verify(userMapper, times(1)).findById(1);
@@ -97,7 +97,7 @@ class UserServiceImplTest {
     }
 
     @Test
-    public void 存在しないユーザーのIDを指定したときにユーザーを削除せず例外が返ること() throws Exception{
+    public void 存在しないユーザーのIDを指定したときにユーザーを削除せず例外が返ること() throws Exception {
         doReturn(Optional.empty()).when(userMapper).findById(1);
 
         assertThatThrownBy(

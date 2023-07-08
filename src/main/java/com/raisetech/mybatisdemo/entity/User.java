@@ -12,11 +12,6 @@ public class User {
     public User() {
     }
 
-    public User(int id, String name) {
-        this.id = 0;
-        this.name = name;
-    }
-
     public User(String name, String address, int age) {
         this.id = 0;
         this.name = name;

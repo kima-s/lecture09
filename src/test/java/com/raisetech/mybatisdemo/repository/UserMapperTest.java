@@ -76,7 +76,7 @@ class UserMapperTest {
 
     @Test
     @DataSet(value = "datasets/users.yml")
-    @ExpectedDataSet(value = "datasets/expectedUsers2.yml", ignoreCols = "id")
+    @ExpectedDataSet(value = "datasets/expectedUsers2.yml")
     @Transactional
     void IDを指定したときにユーザーを更新できること() {
         userMapper.updateUser(new User(3, "山中", "Mie", 38));
@@ -84,7 +84,7 @@ class UserMapperTest {
 
     @Test
     @DataSet(value = "datasets/users.yml")
-    @ExpectedDataSet(value = "datasets/expectedUsers3.yml", ignoreCols = "id")
+    @ExpectedDataSet(value = "datasets/expectedUsers3.yml")
     @Transactional
     void IDを指定したときにユーザーを削除できること() {
         userMapper.deleteUser(3);

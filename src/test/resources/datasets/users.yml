@@ -1,0 +1,13 @@
+users:
+  - id: 1
+    name: "清⽔"
+    address: "Aichi"
+    age: 13
+  - id: 2
+    name: "⼩⼭"
+    address: "Iwate"
+    age: 34
+  - id: 3
+    name: "⽥中"
+    address: "Sapporo"
+    age: 40

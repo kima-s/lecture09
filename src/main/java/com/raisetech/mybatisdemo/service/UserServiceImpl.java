@@ -2,7 +2,6 @@ package com.raisetech.mybatisdemo.service;
 
 import com.raisetech.mybatisdemo.entity.User;
 import com.raisetech.mybatisdemo.exception.ResourceNotFoundException;
-import com.raisetech.mybatisdemo.form.CreateForm;
 import com.raisetech.mybatisdemo.repository.UserMapper;
 import org.springframework.stereotype.Service;
 
@@ -38,11 +37,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(User updateUser) {
-        userMapper.updateUser(updateUser);
+        User user = userMapper.findById(updateUser.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("resource not found"));
+            userMapper.updateUser(updateUser);
     }
 
     @Override
     public void deleteUser(int id){
-        userMapper.deleteUser(id);
+        User user = userMapper.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("resource not found"));
+            userMapper.deleteUser(id);
     };
 }

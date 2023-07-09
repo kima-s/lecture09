@@ -19,6 +19,13 @@ public class User {
         this.age = age;
     }
 
+    public User(int id, String name, String address, int age) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.age = age;
+    }
+
     public int getId() {
         return id;
     }

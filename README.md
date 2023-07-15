@@ -1,4 +1,4 @@
-# UserAPIについて<br>
+# UserAPIについて
 
 ## １、概要
 

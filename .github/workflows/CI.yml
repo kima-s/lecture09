@@ -2,6 +2,7 @@ name: CI
 
 on:
   pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -50,9 +51,7 @@ jobs:
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           status: ${{ job.status }}
-          content: "Hey <@everyone>"
-          title: "Checkstyle"
-          description: "Run Checkstyle"
+          title: "CI"
+          description: "Run CI"
           color: "#cb88d2"
-          url: "https://github.com/sarisia/actions-status-discord"
           username: GitHub Actions

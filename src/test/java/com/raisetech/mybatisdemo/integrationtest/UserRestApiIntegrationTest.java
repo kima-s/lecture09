@@ -203,7 +203,7 @@ public class UserRestApiIntegrationTest {
         String response = mockMvc.perform(MockMvcRequestBuilders.delete("/users/99"))
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
                 .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
-        
+
         JSONAssert.assertEquals("""
                 {
                    "message": "resource not found",

@@ -28,7 +28,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @AutoConfigureMockMvc
 @DBRider
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class UserRestApiIntegrationTest {
+public class userRestApiIntegrationTest {
 
     @Autowired
     MockMvc mockMvc;

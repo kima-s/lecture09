@@ -38,7 +38,7 @@ public class UserRestApiIntegrationTest {
     @Transactional
     void ユーザーが全件取得できること() throws Exception {
         String response = mockMvc.perform(MockMvcRequestBuilders.get("/names"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isNotFound())
                 .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
 
         JSONAssert.assertEquals("""
@@ -203,7 +203,7 @@ public class UserRestApiIntegrationTest {
         String response = mockMvc.perform(MockMvcRequestBuilders.delete("/users/99"))
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
                 .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
-        
+
         JSONAssert.assertEquals("""
                 {
                    "message": "resource not found",

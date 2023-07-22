@@ -38,7 +38,7 @@ public class UserRestApiIntegrationTest {
     @Transactional
     void ユーザーが全件取得できること() throws Exception {
         String response = mockMvc.perform(MockMvcRequestBuilders.get("/names"))
-                .andExpect(MockMvcResultMatchers.status().isNotFound())
+                .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
 
         JSONAssert.assertEquals("""
